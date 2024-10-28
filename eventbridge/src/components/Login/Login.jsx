@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // The intended destination after login, or default to home if not specified
+  const redirectTo = location.state?.from || "/";
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:5001/api/login", {
@@ -14,32 +18,45 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
+      
       const data = await response.json();
+
       if (response.ok) {
-        localStorage.setItem("token", data.token); // Store token in local storage
-        alert(data.message);
-        navigate("/"); // Redirect after login
+        // Save the JWT token in localStorage
+        localStorage.setItem("token", data.accessToken); // Store the token after login
+
+        // Redirect to the original destination or home page
+        navigate(redirectTo);
       } else {
-        alert(data.message);
+        alert(data.message); // Show login error message
       }
     } catch (error) {
       console.error("Login failed:", error);
-      alert("Login failed. Please try again.");
+      alert("An error occurred. Please try again.");
     }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <label>
           Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </label>
         <label>
           Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </label>
         <button type="submit">Login</button>
       </form>

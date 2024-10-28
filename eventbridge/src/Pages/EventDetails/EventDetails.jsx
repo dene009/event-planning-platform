@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { eventList } from "../../utils/EventDatabase.jsx";
 import Navigation from "../../components/Navigation/Navigation";
@@ -31,7 +31,16 @@ const EventDetails = () => {
 
   // Handle booking click to navigate to the booking page
   const handleBookingClick = () => {
-    navigate(`/booking/${filteredEvent.id}`);
+    const token = localStorage.getItem("token");  // Check if JWT token is present
+
+    if (!token) {
+      // If no token, redirect to login and save intended destination
+      alert("Please log in to book the event.");
+      navigate("/login", { state: { from: `/booking/${filteredEvent.id}` } });
+    } else {
+      // If token exists, navigate to the booking page
+      navigate(`/booking/${filteredEvent.id}`);
+    }
   };
 
   return (

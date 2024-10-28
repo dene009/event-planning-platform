@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { fetchWithAuth } from "../../api.js"; // Import fetchWithAuth from api.js
 import './BookingPage.css';
 
 const BookingPage = () => {
-  const { id } = useParams();  // Get the event ID from the URL
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  // State to store form data
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -13,27 +14,27 @@ const BookingPage = () => {
     address: ''
   });
 
-  // Handle form input changes
+  // Redirect to login if token is missing
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please log in to access the booking page.");
+      navigate("/login", { state: { from: `/booking/${id}` } });
+    }
+  }, [id, navigate]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Retrieve the token from localStorage
-      const token = localStorage.getItem("token");
-
-      // Send booking data to the server
-      const response = await fetch(`http://localhost:5001/api/book-event/${id}`, {
+      const response = await fetchWithAuth(`/api/book-event/${id}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Include JWT token in the header
-        },
-        body: JSON.stringify({ ...formData, eventId: id }),  // Send form data along with event ID
+        body: JSON.stringify({ ...formData, eventId: id }),
       });
 
       if (!response.ok) {
@@ -41,7 +42,7 @@ const BookingPage = () => {
       }
 
       const result = await response.json();
-      alert(result.message); // Confirm the booking to the user
+      alert(result.message);
     } catch (error) {
       console.error("Error booking event:", error);
       alert("Booking failed. Please try again.");
