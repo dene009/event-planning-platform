@@ -1,0 +1,96 @@
+/* Parent container for centering the card */
+.container {
+  display: flex;
+  justify-content: center;  /* Centers the card horizontally */
+  align-items: center;      /* Centers the card vertically */
+  min-height: 100vh;        /* Ensures the container takes up full viewport height */
+  padding: 20px;            /* Optional: Add padding for spacing */
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: white;
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 32px;
+  border-radius: 16px;
+  border: 2px solid var(--primary-color);
+  box-sizing: border-box;
+  overflow: hidden; /* Ensures that content stays inside the card */
+  transition: box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.187);
+}
+
+.card img {
+  width: 180px; /* Set a fixed width for the images */
+  height: auto;
+  border-radius: 14px;
+  object-fit: cover; /* Ensures the image doesn't overflow */
+}
+
+.card .card-content {
+  flex-grow: 1; /* Ensures the content takes up the remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.card .card-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.card .card-content h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: rgb(43, 50, 43);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.card .card-content p {
+  font-size: 18px;
+  margin-top: 18px;
+}
+
+.card .card-content p span {
+  font-size: 16px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .card img {
+    width: 100%; /* Make the image responsive */
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .card .card-content {
+    align-items: center; /* Center content on smaller screens */
+    text-align: center;
+  }
+
+  .card .card-content h3 {
+    font-size: 20px;
+  }
+
+  .card .card-content p {
+    font-size: 16px;
+  }
+}
