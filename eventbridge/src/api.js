@@ -1,4 +1,3 @@
-// src/api.js
 export const API_BASE_URL = "http://localhost:5001";
 
 export async function fetchWithAuth(url, options = {}) {
