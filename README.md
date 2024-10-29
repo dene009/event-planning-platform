@@ -8,9 +8,6 @@ Welcome to eventbridge, a web-based solution designed to simplify the process of
 <li><strong>Event Creation:</strong> Create and customize events with ease.</li>
 <li><strong>Registration Management:</strong> Allow attendees to register for events online.</li>
 <li><strong>Ticket Booking:</strong> Enable attendees to book tickets for events online.</li>
-<li><strong>Email Notifications:</strong> Send automated emails for event registrations and bookings, which are sent directly to attendees' email addresses.</li>
-<li><strong>Attendee Tracking:</strong> Keep track of attendees and monitor check-in and check-out times.</li>
-<li><strong>Admin Management:</strong> Product managers can add admins that can create and manage events.</li>
 </ul>
 
 <h1>Technologies Used</h1>
@@ -39,8 +36,8 @@ Our eventbridge application is built on a microservice architecture. This allows
 <p>Before running the servers, you need to set up the following environment variables:</p>
 <h4>For the client-side:</h4>
 <p>Create a <b>.env.local</b> file in the client folder with the following variables:</p>
-<pre><code class="language-php">NEXT_PUBLIC_BASE_URL - the base URL of the API server (e.g. http://localhost:5173)
-NEXT_PUBLIC_API_URL - the URL of the API server (e.g. http://localhost:5001)</code></pre>
+<pre><code class="language-php">PUBLIC_BASE_URL - the base URL of the API server (e.g. http://localhost:5173)
+PUBLIC_API_URL - the URL of the API server (e.g. http://localhost:5001)</code></pre>
 <h4>For the server-side:</h4>
 <p>Create a <b>.env</b> file in the server folder with the following variables:</p>
 <pre><code class="language-rust">MONGO_ATLAS_URI - the connection string for your MongoDB Atlas database
@@ -68,7 +65,7 @@ eventbridge application has three main components:
 <h1>👥 Team</h1>
 
 <ul>
-  <li><strong>Esidene Abraham Alicha:</strong>  
+  <li><strong>Esidene Abraham Alicha</strong>  
   
   </a>
   </li>
