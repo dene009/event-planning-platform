@@ -1,6 +1,7 @@
 // components/Register.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -44,6 +45,7 @@ const Register = () => {
   return (
     <div>
       <h2>Register</h2>
+      <h5>Create your personal account</h5>
       <form onSubmit={handleSubmit}>
         <label>
           Email:

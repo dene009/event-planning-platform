@@ -1,44 +1,67 @@
+/* Main Filter Card */
 .filter-card {
-    width: 500px;
-    height: 70px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-  
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 12px;
-    padding-bottom: 24px;
-    margin-bottom: 40px;
-    border: 1px solid var(--primary-color);
-  }
-  .wrapper {
-    width: 500px;
-    height: 100px;
-    padding: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .filter-card form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .month label {
-    font-size: 16px !important;
-  }
-  .month select {
-    font-size: 16px !important;
-  }
-  .filter-card button {
-    padding: 12px 28px 12px 28px;
-    border-style: none;
-    border-radius: 6px;
-    background-color: var(--primary-color);
-    cursor: pointer;
-  }
-  .filter-card button:hover {
-    background-color: rgb(9, 140, 16);
-  }
-  
+  width: 550px;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding-bottom: 24px;
+  margin-bottom: 40px;
+  margin-left: 5px;
+  border: 1px solid var(--primary-color);
+}
+
+/* Wrapper for alignment */
+.wrapper {
+  width: 500px;
+  height: 100px;
+  padding: 24px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+/* Form inside the Filter Card */
+.filter-card form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+/* Month Label Styling */
+.month label {
+  font-size: 30px !important;
+  background-color: white;
+}
+
+/* Select Dropdown Styling for Month and Year */
+.month select, .year select {
+  font-size: 30px !important;
+  background-color: white;
+  color: var(--primary-color); /* Optional: set text color */
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 4px;
+  -webkit-appearance: none; /* Removes default styling in Safari */
+  -moz-appearance: none;    /* Removes default styling in Firefox */
+  appearance: none;         /* Standard appearance reset */
+}
+
+/* Button Styling */
+.filter-card button {
+  padding: 12px 28px;
+  border-style: none;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Hover Effect for Button */
+.filter-card button:hover {
+  background-color: rgb(188, 201, 189);
+}
