@@ -45,7 +45,7 @@ const Register = () => {
   return (
     <div>
       <h2>Register</h2>
-      <h5>Create your personal account</h5>
+      <h5>Create your personal account to enjoy your desired event</h5>
       <form onSubmit={handleSubmit}>
         <label>
           Email:
