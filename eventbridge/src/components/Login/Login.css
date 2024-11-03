@@ -58,3 +58,10 @@ footer p {
     margin: 0;
     font-size: 0.9rem;
 }
+
+h5 {
+    font-weight: normal;  /* Makes the title bold */
+    font-size: 12px;    /* Increases the font size */
+    text-align: left; /* Optional: centers the title */
+    margin-bottom: 5px; /* Adds space below the title */
+}

@@ -7,7 +7,6 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const cookieParser = require("cookie-parser");
 
-
 // Models
 const Event = require("./models/Event");       // Event model
 const User = require("./models/User");         // User model

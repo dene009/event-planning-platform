@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import "./login.css";
 
 const Login = () => {
@@ -60,6 +60,11 @@ const Login = () => {
           />
         </label>
         <button type="submit">Login</button>
+        
+        {/* Add links to Register and Forgot Password pages */}
+        <h5>
+          <Link to="/register">Register</Link> | <Link to="/forgot-password">Forgot your password?</Link>
+        </h5>
       </form>
     </div>
   );
