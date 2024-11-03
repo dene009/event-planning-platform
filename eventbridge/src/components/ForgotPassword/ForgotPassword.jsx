@@ -1,36 +1,31 @@
 // ForgotPassword.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  
+
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch("http://localhost:5001/api/forgot-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }), // Make sure 'email' is defined in the component
+        body: JSON.stringify({ email }),
       });
-  
-      if (!response.ok) {
-        // If response is not OK, capture the response details
-        const errorData = await response.json();
-        console.error("Forgot password error:", errorData);
-        alert(errorData.message || "Failed to reset password. Please try again.");
-        return;
-      }
-  
+
       const data = await response.json();
-      alert("Password reset email sent! Please check your inbox.");
+      if (response.ok) {
+        setMessage("A password reset link has been sent to your email.");
+      } else {
+        setMessage(data.message);
+      }
     } catch (error) {
-      // Log any network or unexpected errors
-      console.error("Unexpected forgot password error:", error);
-      alert(error.message || "An error occurred. Please try again.");
+      console.error("Password reset failed:", error);
+      setMessage("An error occurred. Please try again.");
     }
   };
-  
 
   return (
     <div>
@@ -43,7 +38,6 @@ const ForgotPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" // Email regex pattern
           />
         </label>
         <button type="submit">Send Reset Link</button>
