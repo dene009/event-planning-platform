@@ -2,7 +2,7 @@
 nav {
   width: 100%;
   height: 80px;
-  background: linear-gradient(to bottom, #ffffff, #d7ffda);
+  background: rgb(155, 240, 155);
   position: fixed;
   top: 0;                     /* Fixes the nav to the top of the page */
   left: 0;
@@ -39,4 +39,15 @@ nav ul li a {
 /* Hover effect for links */
 nav ul li a:hover {
   color: var(--primary-color);  /* Use a variable color for flexibility */
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 25px;
+  color: blue;
+  margin-left: auto; /* Adjust this value as needed */
+}
+
+ul {
+  justify-content: flex-start; /* Keeps other links to the left */
 }
