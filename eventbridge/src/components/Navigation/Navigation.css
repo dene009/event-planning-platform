@@ -16,13 +16,12 @@ nav {
 ul {
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start; /* Aligns links to the left */
   align-items: center;
   gap: 36px;
   list-style-type: none;
   padding: 0 80px;            /* Horizontal padding for spacing */
   margin: 0;
-  margin-left: auto; 
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -41,13 +40,11 @@ nav ul li a:hover {
   color: var(--primary-color);  /* Use a variable color for flexibility */
 }
 
+/* Brand name styling */
 .brand-name {
   font-weight: bold;
   font-size: 25px;
   color: blue;
-  margin-left: auto; /* Adjust this value as needed */
-}
-
-ul {
-  justify-content: flex-start; /* Keeps other links to the left */
+  margin-right: auto; /* Moves brand name to the beginning */
+  padding-left: 5px; /* Optional: Adds spacing from the edge */
 }

@@ -5,9 +5,8 @@ const Navigation = () => {
   return (
     <nav>
       <ul>
-        <li className="brand-name">EventBridge</li>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Eventbridge</Link>
         </li>
         <li>
           <Link to="/find-events">Find Events</Link>
