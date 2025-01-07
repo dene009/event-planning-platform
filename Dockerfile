@@ -31,4 +31,3 @@ EXPOSE 5173 5001
 
 # Start the application
 CMD ["npm", "start"]
-

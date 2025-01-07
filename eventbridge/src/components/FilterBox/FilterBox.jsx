@@ -1,4 +1,5 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import { generateDataOptions,months,years } from "../../utils/DataRender";
 import "./FilterBox.css";
 
@@ -51,4 +52,9 @@ const FilterBox = ({getMonthYear})=>{
         </div>
     )
 }
+
+FilterBox.propTypes = {
+    getMonthYear: PropTypes.func.isRequired,
+};
+
 export default FilterBox;
