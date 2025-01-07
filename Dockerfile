@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Use a Node.js image
-FROM node:18.0.0-alpine
+FROM node:18.0.0-alpine AS base
 
 # Set the working directory
 WORKDIR /usr/src/app
@@ -31,3 +31,14 @@ EXPOSE 5173 5001
 
 # Start the application
 CMD ["npm", "start"]
+
+# Define the test stage
+FROM base as test
+ENV NODE_ENV test
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=package-lock.json,target=package-lock.json \
+    --mount=type=cache,target=/root/.npm \
+    npm ci --include=dev
+USER node
+COPY . .
+RUN npm run test
