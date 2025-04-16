@@ -42,7 +42,7 @@ COPY . .
 CMD node src/index.js
 
 # Define the test stage
-FROM base as test
+FROM base AS test
 ENV NODE_ENV=test
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
