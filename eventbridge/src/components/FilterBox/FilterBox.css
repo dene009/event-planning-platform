@@ -19,7 +19,7 @@
   width: 500px;
   height: 100px;
   padding: 24px;
-  display: inline-flex;
+  display: grid;
   justify-content: space-between;
   align-items: center;
   background-color: white;
@@ -27,7 +27,7 @@
 
 /* Form inside the Filter Card */
 .filter-card form {
-  display: flex;
+  display: inline-block;
   justify-content: space-between;
   align-items: center;
   background-color: white;
